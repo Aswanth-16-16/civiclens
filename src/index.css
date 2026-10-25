@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* CIVICLENS Master Futuristic Color System */
+    --color-bg-main: #080D16;
+    --color-bg-secondary: #0C1320;
+    --color-surface-card: #121C2B;
+    --color-surface-elevated: #192638;
+    
+    --color-accent-cyan: #42E8F5;
+    --color-accent-violet: #9580FF;
+    
+    --color-text-main: #F4F7FC;
+    --color-text-secondary: #A6B4C8;
+    
+    --color-border-subtle: rgba(160, 190, 220, 0.14);
+    --color-border-hover: rgba(66, 232, 245, 0.35);
+    
+    --color-status-warning: #FFBF69;
+    --color-status-error: #FF6B78;
+    --color-status-success: #66E6B0;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-main);
+    color: var(--color-text-main);
+    overflow-x: hidden;
+  }
+}
+
+/* Custom subtle dark scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #080D16;
+}
+::-webkit-scrollbar-thumb {
+  background: #192638;
+  border-radius: 3px;
+  border: 1px solid rgba(160, 190, 220, 0.14);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #23354C;
+}
+
+/* Leaflet dark mode overrides */
+.leaflet-container {
+  background: #080D16 !important;
+  font-family: inherit;
+}
+.dark-tiles {
+  filter: brightness(0.68) invert(1) contrast(1.5) hue-rotate(195deg) saturate(0.3) !important;
+}
+.leaflet-bar a {
+  background-color: #0C1320 !important;
+  color: #42E8F5 !important;
+  border-bottom: 1px solid rgba(160, 190, 220, 0.14) !important;
+  transition: all 0.2s ease !important;
+}
+.leaflet-bar a:hover {
+  background-color: #192638 !important;
+  color: #F4F7FC !important;
+  box-shadow: 0 0 10px rgba(66, 232, 245, 0.3) !important;
+}
+.leaflet-popup-content-wrapper {
+  background: #0C1320 !important;
+  color: #F4F7FC !important;
+  border: 1px solid rgba(160, 190, 220, 0.18) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.7), 0 8px 10px -6px rgba(0, 0, 0, 0.7) !important;
+}
+.leaflet-popup-tip {
+  background: #0C1320 !important;
+}
+
+/* Leaflet Custom Tooltip styling */
+.leaflet-tooltip.civic-map-tooltip {
+  background: #0C1320 !important;
+  border: 1px solid rgba(66, 232, 245, 0.35) !important;
+  border-radius: 10px !important;
+  color: #F4F7FC !important;
+  padding: 0 !important;
+  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.85), 0 0 18px rgba(66, 232, 245, 0.22) !important;
+  backdrop-filter: blur(8px) !important;
+}
+.leaflet-tooltip-top.civic-map-tooltip::before {
+  border-top-color: #0C1320 !important;
+}
+.leaflet-tooltip-bottom.civic-map-tooltip::before {
+  border-bottom-color: #0C1320 !important;
+}
+.leaflet-tooltip-left.civic-map-tooltip::before {
+  border-left-color: #0C1320 !important;
+}
+.leaflet-tooltip-right.civic-map-tooltip::before {
+  border-right-color: #0C1320 !important;
+}
+
+/* Marker hover pulse animation */
+@keyframes markerPulseGlow {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.4); opacity: 0.25; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+.civic-marker-pulse {
+  animation: markerPulseGlow 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Number illumination on card hover */
+.group:hover .num-illumination {
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+/* Grid & ambient texture patterns */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(66, 232, 245, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(66, 232, 245, 0.035) 1px, transparent 1px);
+}
+.bg-dots-pattern {
+  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(149, 128, 255, 0.1) 1px, transparent 1px);
+}
+
+/* Glow & Atmospheric utilities */
+.glow-cyan-sm {
+  box-shadow: 0 0 16px -2px rgba(66, 232, 245, 0.25);
+}
+.glow-cyan-md {
+  box-shadow: 0 0 28px -4px rgba(66, 232, 245, 0.35);
+}
+.glow-violet-sm {
+  box-shadow: 0 0 16px -2px rgba(149, 128, 255, 0.22);
+}
+
